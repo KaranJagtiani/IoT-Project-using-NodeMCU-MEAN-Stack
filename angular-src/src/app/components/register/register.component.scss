@@ -1,0 +1,40 @@
+.mat-form-field {
+  width: 100%;
+}
+
+.passNotMatch {
+  margin-top: -20px;
+  position: absolute;
+  font-size: 12px;
+  font-weight: 800;
+  color: #ff1919;
+}
+
+.passAcceptable {
+  margin-top: -15px;
+  position: absolute;
+  font-size: 12px;
+  font-weight: 800;
+  color: #8b8b8b;
+}
+
+.passStrong {
+  margin-top: -15px;
+  position: absolute;
+  font-size: 12px;
+  font-weight: 800;
+  color: #19ff38;
+}
+
+.usernameTaken {
+  margin-top: -20px;
+  position: absolute;
+  font-size: 12px;
+  font-weight: 800;
+  color: #ff1919;
+}
+
+.mat-button{
+    margin-top: 20px;
+    padding: 5px;
+}

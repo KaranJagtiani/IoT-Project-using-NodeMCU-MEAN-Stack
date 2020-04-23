@@ -1,0 +1,455 @@
+.container1 {
+margin-left: 2.5%;
+  width: 95%!important;
+}
+
+@media only screen and (max-width: 946px) {
+  .container {
+    margin-left: 0px;
+  }
+
+  #swipe-right {
+    margin-top: -43% !important;
+  }
+  .cross_button {
+    margin-bottom: -10px;
+  }
+
+  .cross_button h4 {
+    font-size: 20px !important;
+    margin-left: -50px;
+  }
+  .modal_header {
+    margin-top: 25px;
+  }
+  .modal_header button {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #swipe-right {
+    margin-top: -33% !important;
+  }
+  flash-messages {
+    margin-left: -54px !important;
+  }
+  #response {
+    margin-top: 8% !important;
+  }
+}
+
+@media only screen and (min-width: 1366px) {
+  #swipe-right {
+    margin-top: -24.5% !important;
+  }
+  flash-messages {
+    margin-left: -135px !important;
+  }
+}
+
+@media only screen and(max-width: 850px) {
+  #response {
+    margin-top: 20% !important;
+  }
+  #response2 {
+    margin-top: 2% !important;
+  }
+  .cross_button {
+    margin-bottom: -10px;
+  }
+
+  .cross_button h4 {
+    font-size: 20px !important;
+    margin-left: -50px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  flash-messages {
+    margin-left: -30px;
+  }
+
+  .container1 {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .images {
+    width: 90%;
+    height: 90%;
+  }
+
+  .marks-container {
+    padding-top: 20px;
+  }
+
+  .cross_button {
+    margin-top: 12px;
+  }
+
+  .change_password_header {
+    margin-left: -80px !important;
+  }
+
+  #changePWD {
+    font-size: 15px;
+    font-weight: bolder;
+    margin-left: -20px;
+  }
+
+  .update-password .mat-button {
+    display: none !important;
+  }
+
+  .mobileButton {
+    display: block !important;
+  }
+  #swipe-right {
+    margin-top: -70% !important;
+  }
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.image-container {
+  position: relative;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.image-container:hover .image {
+  opacity: 0.3;
+}
+
+.image-container:hover .middle {
+  opacity: 1;
+}
+
+.d-block {
+  margin-left: -15px;
+  background-color: #f44242;
+  border: solid #f44242 3px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.personal-details-form .mat-button {
+  color: #ffffff;
+  margin-top: 10px;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: bolder;
+  letter-spacing: 1.2px;
+  text-transform: capitalize;
+}
+
+.marks-container {
+  text-align: center;
+}
+
+.attendance-container {
+  text-align: center;
+}
+
+.card {
+  margin-top: 10px;
+}
+
+.userData p {
+  text-align: center;
+  color: #161616;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.update-password .mat-button {
+  margin-top: -10px;
+  right: 10px;
+  float: right;
+  margin-bottom: 20px;
+  font-size: 12px;
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #ffffff;
+  border-radius: 6px;
+}
+
+.change_password_header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cross_button button {
+  z-index: 999;
+  float: right;
+  margin-top: -42px;
+  margin-right: -5px;
+  color: #1d1d1d;
+  background: #fff;
+  border: none;
+  text-decoration: none;
+  margin-left: -5px;
+}
+
+.cross_button button:hover {
+  color: #ff1346;
+}
+
+.swipes {
+  overflow: hidden;
+}
+
+.current-password-field {
+  margin-top: 25px;
+}
+
+.new-password-field {
+  margin-top: 5px;
+}
+
+.new-password-field .mat-form-field {
+  margin-bottom: -5px;
+}
+
+.submit-current-password .mat-button {
+  margin-top: 30px;
+  padding: 5px;
+  border-radius: 6px;
+  color: #ffffff;
+}
+
+#swipe-left {
+  position: relative;
+  transition: all 0.5s;
+}
+
+.submit-new-password .mat-button {
+  padding: 5px;
+  border-radius: 6px;
+  color: #ffffff;
+}
+
+#swipe-right {
+  margin-top: -24%;
+  transform: translate(150%);
+  position: relative;
+  transition: all 0.5s;
+}
+
+#pass_incorrect {
+  text-align: center;
+  display: none;
+}
+
+.footer {
+  margin-left: -5px;
+  margin-top: 18px;
+}
+
+::ng-deep .red-tooltip {
+  font-weight: bolder !important;
+  margin-bottom: 160px !important;
+  text-align: center !important;
+  font-size: 13.3px !important;
+  color: #ffffff !important;
+}
+
+.spin-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  .spinner {
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    border: 5px solid transparent;
+    border-top-color: #ff4618;
+    top: 50%;
+    left: 50%;
+    margin: -30px;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      border: 5px solid transparent;
+      border-radius: 50%;
+    }
+
+    &:before {
+      border-top-color: #1f93ff;
+      top: -15px;
+      left: -15px;
+      right: -15px;
+      bottom: -15px;
+      animation: spin 3s linear infinite;
+    }
+
+    &:after {
+      border-top-color: #ff222d;
+      top: 7.5px;
+      left: 7.5px;
+      right: 7.5px;
+      bottom: 7.5px;
+      animation: spin 4s linear infinite;
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.wrongPass {
+  position: absolute;
+  float: left;
+  margin-left: 5px;
+  margin-top: -10px;
+  position: absolute;
+  font-size: 15px;
+  font-weight: 400;
+  color: #e40000;
+}
+
+#response {
+  margin-top: 6%;
+  margin-left: -100%;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  background: #3cff00;
+  color: #ffffff;
+  position: fixed;
+  z-index: 99999;
+  float: left;
+  transition: margin-left 1s;
+}
+
+#response2 {
+  margin-top: 1%;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  background: #3cff00;
+  color: #ffffff;
+  position: fixed;
+  left: -250px;
+  z-index: 999;
+  float: left;
+  transition: left 1s;
+}
+
+.userData .mat-button {
+  font-weight: 600;
+}
+
+.mobileButton {
+  display: none;
+}
+
+.mobileButton .mat-button {
+  margin-top: 20px;
+  padding: 8px;
+  color: #ffffff;
+  border-radius: 6px;
+}
+
+.workshop-list {
+  text-align: center;
+  margin-top: 20px;
+}
+
+table {
+  padding: -5px !important;
+  text-align: center;
+}
+
+th {
+  margin-right: 20px;
+  margin-bottom: -15px;
+  font-size: 17px;
+}
+
+th i {
+  margin-top: -4px;
+  margin-right: 5px;
+}
+
+th .mat-button {
+  margin-right: 5px;
+  float: right;
+  left: 0.1px;
+  font-size: 12px;
+}
+
+.cross_button h4,
+h1 {
+  margin-top: 8px;
+  text-align: center;
+}
+.cross_button button {
+  z-index: 999;
+  float: right;
+  margin-top: -42px;
+  margin-right: -5px;
+  color: #1d1d1d;
+  background: #fff;
+  border: none;
+  text-decoration: none;
+  margin-left: -5px;
+}
+
+.cross_button button:hover {
+  color: #ff1346;
+}
+
+.modal_header {
+  text-align: center;
+}
+
+.modal_header button {
+  margin-top: 5px;
+  color: white;
+  font-weight: 600;
+  padding: 8px;
+}
+
+.modal_header h5 {
+  -webkit-font-smoothing: antialiased;
+  margin-top: 25px;
+  margin-bottom: 20px !important;
+}

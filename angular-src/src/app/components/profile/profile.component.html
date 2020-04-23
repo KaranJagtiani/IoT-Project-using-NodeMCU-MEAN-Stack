@@ -1,0 +1,150 @@
+<div class="below-nav"></div>
+<div id="response">
+    <p *ngIf="newPassDomBool || currentPassDomBool" class="h6">{{response}}</p>
+</div>
+<div class="container1">
+    <div id="response2">
+        <p *ngIf="passChanged" class="h6">{{response}}</p>
+    </div>
+    <div *ngIf="user">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+
+                    <div class="card-body">
+
+                        <div class="userData">
+                            <p class="h3">Profile<span class="update-password">
+                                    <button mat-button (click)="changePassword(change_password)"
+                                        class="btn btn-primary">Change Password</button>
+                                </span></p>
+                        </div>
+
+                        <hr>
+                        <ng-template #change_password>
+                            <div class="change_password_header">
+                                <h4 id="changePWD">Change Password</h4>
+                                <div class="cross_button">
+                                    <button mat-button mat-dialog-close aria-label="Close"><i
+                                            class="fa fa-times"></i></button>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="swipes">
+                                <div id="swipe-left">
+                                    <form #frmCurrentPass="ngForm" (submit)="submitCurrentPassword()">
+                                        <div id="pass_incorrect">
+                                            <p class="h5">Password Incorrect.</p>
+                                        </div>
+                                        <div class="current-password-field">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Enter Current Password </mat-label>
+                                                <input matInput type="password" placeholder="Enter Password"
+                                                    require="true" [(ngModel)]="currentPass" name="currentPass"
+                                                    required>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="submit-current-password">
+                                            <button mat-button type="submit" [disabled]="frmCurrentPass.invalid"
+                                                class="btn btn-primary btn-block">
+                                                Submit
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div id="swipe-right">
+                                    <form #frmConfirmPass="ngForm" (submit)="submitNewPassword()">
+                                        <div class="new-password-field">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Enter New Password </mat-label>
+                                                <input matTooltipPosition="above"
+                                                    matTooltip="Password Must Be 8 Characters Long, Must Contain an Uppercase Letter, A Number, And a Special Character."
+                                                    matTooltipClass="red-tooltip" matInput type="password"
+                                                    placeholder="Enter Password" require="true" [(ngModel)]="newPass"
+                                                    name="newPass" required>
+                                            </mat-form-field>
+
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Confirm New Password </mat-label>
+                                                <input matInput type="password" placeholder="Confirm Password"
+                                                    require="true" [(ngModel)]="newConfirmPass" name="newConfirmPass"
+                                                    required>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="submit-new-password">
+                                            <button mat-button type="submit" [disabled]="frmConfirmPass.invalid"
+                                                class="btn btn-danger btn-block">
+                                                Confirm
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </ng-template>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="tab-content ml-1" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="basicInfo" role="tabpanel"
+                                        aria-labelledby="basicInfo-tab">
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-5 col-4">
+                                                <h5><strong>Name:</strong></h5>
+                                            </div>
+                                            <div class="col-md-7 col-8 text-right">
+                                                <h5><strong>{{user.name}}</strong></h5>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-5 col-5">
+                                                <h5><strong>Username:</strong></h5>
+                                            </div>
+                                            <div class="col-md-7 col-7 text-right">
+                                                <h5><strong>{{user.username}}</strong></h5>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-5 col-4">
+                                                <h5><strong>Email:</strong></h5>
+                                            </div>
+                                            <div class="col-md-7 col-8 text-right">
+                                                <h5><strong>{{user.email}}</strong></h5>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-5 col-4">
+                                                <h5><strong>Mobile:</strong></h5>
+                                            </div>
+                                            <div class="col-md-7 col-8 text-right">
+                                                <h5><strong>{{user.mobile}}</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="admin">
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-3 col-md-5 col-4">
+                                                    <h5><strong>Admin:</strong></h5>
+                                                </div>
+                                                <div class="col-md-7 col-8 text-right">
+                                                    <h5><strong>True</strong></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="mobileButton">
+            <button mat-button (click)="changePassword(change_password)" class="btn btn-primary container fluid">Change
+                Password</button>
+        </span>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+
+<app-loader></app-loader>
+<form [formGroup]="loginForm" class="text-center border border-light p-5" (submit)="registerNewUser()">
+    <p class="h4 mb-2">Register</p>
+    <div class="form-row">
+        <div class="col">
+            <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input type="text" formControlName="firstName" matInput placeholder="Enter First Name">
+                <mat-error *ngIf="!loginForm.controls['firstName'].value">Required Field</mat-error>
+                <mat-error *ngIf="!loginForm.controls['firstName'].valid && loginForm.controls['firstName'].value">
+                    Enter First Name Only</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input type="text" formControlName="lastName" matInput placeholder="Enter Last Name">
+                <mat-error *ngIf="!loginForm.controls['lastName'].value">Required Field</mat-error>
+                <mat-error *ngIf="!loginForm.controls['lastName'].valid && loginForm.controls['lastName'].value">
+                    Enter Last Name Only</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="text" formControlName="email" matInput placeholder="Enter Email">
+        <mat-error *ngIf="!loginForm.controls['email'].value">Required Field</mat-error>
+        <mat-error *ngIf="!loginForm.controls['email'].valid && loginForm.controls['email'].value">
+            Invalid Email</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Mobile</mat-label>
+        <input (keypress)="onlyNumber($event)" maxlength="10" type="text" formControlName="mobile" matInput
+            placeholder="Enter Mobile">
+        <mat-error *ngIf="!loginForm.controls['mobile'].value">Required Field</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input type="text" formControlName="username" matInput placeholder="Enter Username">
+        <mat-error *ngIf="!loginForm.controls['username'].value">Required Field</mat-error>
+        <mat-error
+            *ngIf="loginForm.controls['username'].value.length<8 && loginForm.controls['username'].value.length>0 && !loginForm.controls['username'].valid">
+            Username has to be 6 characters long.
+        </mat-error>
+        <mat-error *ngIf="loginForm.controls['username'].value.length>=8 && !loginForm.controls['username'].valid">
+            Username can only contain letters, digits & underscores
+        </mat-error>
+    </mat-form-field>
+    <div class="usernameTaken" *ngIf="usernameTaken">Username Has Been Taken</div>
+    <mat-form-field>
+        <input (change)="checkPass()" matInput formControlName="password" placeholder="Enter Password"
+            [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="!loginForm.controls['password'].value">Required Field
+        </mat-error>
+    </mat-form-field>
+    <div class="passAcceptable" *ngIf="loginForm.controls['password'].value && acceptablePass">
+        Acceptable</div>
+    <div class="passStrong" *ngIf="loginForm.controls['password'].value && strongPass">Strong
+    </div>
+    <div class="passNotMatch" *ngIf="loginForm.controls['password'].value && weakPass">Weak</div>
+    <mat-form-field>
+        <input (change)="checkPassMatch()" matInput formControlName="passwordC" placeholder="Confirm Password"
+            [type]="hide2 ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide2 = !hide2">
+            <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="!loginForm.controls['passwordC'].value">Required Field
+        </mat-error>
+    </mat-form-field>
+    <div class="passNotMatch" *ngIf="!passMatch && loginForm.controls['passwordC'].value">Passwords
+        Do
+        Not Match</div>
+    <button mat-button class="btn btn-primary btn-block font-weight-bold" type="submit">Submit</button>
+</form>

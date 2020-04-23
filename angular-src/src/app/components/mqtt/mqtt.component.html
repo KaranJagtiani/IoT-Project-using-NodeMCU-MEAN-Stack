@@ -1,0 +1,21 @@
+<div class="appliances text-center container-fluid">
+    <div class="row justify-content-center">
+        <span *ngFor="let appliance of AppInfo; let i = index" class="col-sm-4">
+            <p class="h5">{{appliance.name}}</p>
+            <img *ngIf="appliance.appOn && !appliance.appOff" src="../../../assets/images/Bulb-On.png">
+            <button *ngIf="appliance.appOn && !appliance.appOff" mat-button class="container-fluid btn btn-danger"
+                (click)="sendMessage(i)">Turn Off</button>
+            <img *ngIf="!appliance.appOn && appliance.appOff" src="../../../assets/images/Bulb-Off.png">
+            <button *ngIf="!appliance.appOn && appliance.appOff" mat-button class="container-fluid btn btn-danger"
+                (click)="sendMessage(i)">Turn On</button>
+        </span>
+    </div>
+
+    <div class="row justify-content-center app-info">
+        <span *ngFor="let x of AppInfo; let j = index" class="col-sm-4">
+            <p class="h6 text-center">{{x.name}}</p>
+            <p class="h6 text-center"> Last Turned On: {{x.timeStarted}}</p>
+            <p class="h6 text-center">Last Turned Off: {{x.timeEnded}}</p>
+        </span>
+    </div>
+</div>

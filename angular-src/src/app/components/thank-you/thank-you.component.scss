@@ -1,0 +1,153 @@
+#tickMark {
+  margin-top: -20px;
+}
+
+.checkmark {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 0;
+  animation: dash 1.5s ease-in-out;
+  -webkit-animation: dash 2s ease-in-out;
+}
+
+.spin {
+  animation: spin 2s;
+  -webkit-animation: spin 2s;
+  transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+}
+
+.textAfterSubmit {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  width: 75%;
+  border: 1px solid #acacac;
+  margin-top: 23%;
+  margin-bottom: -20px;
+  text-align: center;
+  color: black;
+  padding: 20px;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+  //animation: boxup linear 0.5s;
+  //-webkit-animation: boxup linear 0.5s;
+}
+
+@-webkit-keyframes boxup {
+  0% {
+    opacity: 0;
+    left: 100%;
+  }
+  100% {
+    opacity: 1;
+    left: 50%;
+  }
+}
+
+@keyframes boxup {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: 50%;
+  }
+}
+
+.thankyou {
+  font-family: sans-serif;
+  color: #38d15e;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px auto;
+  margin-bottom: 20px;
+  text-align: center;
+  animation: text linear 0.3s;
+  -webkit-animation: text linear 0.3s;
+}
+
+@media only screen and(max-width: 1024px) {
+  .textAfterSubmit {
+    margin-top: 30% !important;
+  }
+}
+
+@media only screen and(max-width: 768px) {
+  .textAfterSubmit {
+    margin-top: 85% !important;
+  }
+  .checkmark {
+    margin-left: 20px !important;
+  }
+  .textAfterSubmit {
+    margin-left: -5px !important;
+    width: 90% !important;
+  }
+}
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes text {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes text {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.link {
+  color: #0044ff;
+}
+
+.link:hover {
+  cursor: pointer;
+}

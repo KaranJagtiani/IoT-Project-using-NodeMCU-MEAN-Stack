@@ -1,0 +1,27 @@
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" [containerInside]="false">
+    <mdb-navbar-brand><p class="navbar-brand h2">Appliance Automation</p></mdb-navbar-brand>
+    <links>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item" *ngIf="!user" [routerLinkActive]="['active']">
+                <a *ngIf = "!user" mdbWavesEffect class="nav-link waves-light" [routerLink]="['/login']"><i class = "fa fa-sign-in"></i> Login <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item" *ngIf="!user" [routerLinkActive]="['active']">
+                <a *ngIf = "!user" mdbWavesEffect class="nav-link waves-light" [routerLink]="['/register']"><i class = "fa fa-user-plus"></i> Sign Up <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item" *ngIf="user" [routerLinkActive]="['active']">
+                <a mdbWavesEffect class="nav-link waves-light" [routerLink]="['/appliances']"><i class = "fa fa-bolt"></i> Appliances<span class="sr-only">(current)</span></a>
+            </li>
+            <li *ngIf = "user" class="nav-item dropdown" dropdown>
+                <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light"
+                    mdbWavesEffect>
+                    <i class="fa fa-user"></i> Profile<span class="caret"></span></a>
+                <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+                    <a class="dropdown-item waves-light" [routerLink]="['/profile']" mdbWavesEffect href="#">My account</a>
+                    <a class="dropdown-item waves-light" (click) = "logoutClicked()" mdbWavesEffect href="#">Log out</a>
+                </div>
+            </li>
+        </ul>
+    </links>
+</mdb-navbar>
