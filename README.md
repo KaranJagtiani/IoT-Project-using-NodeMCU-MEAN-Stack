@@ -28,6 +28,12 @@ IoT application built using the MEAN stack for controlling appliances connected 
 
 ## Instructions
 
+1. Install this repository on your machine by downloading the zip file or running this command:
+
+```
+git clone https://github.com/KaranJagtiani/IoT-Application-using-MEAN-Stack.git
+```
+
 1. Run this command in the main directory, as well as in the "angular-src" directory for installing the necessary node modules:
 
 ```
@@ -36,21 +42,23 @@ npm install
 
 2. Add your broker service credentials in "app.js" and "nodemcu_sketch" files.
 
-3. Upload "nodemcu_sketch" on your Node MCU.
+3. Make sure you have a active internet connection and add your WiFi credentials in "nodemcu_sketch" file.
 
-4. Make sure MongoDB is running by running this command:
+4. Upload "nodemcu_sketch" on your Node MCU.
+
+5. Make sure MongoDB is running:
 
 ```
 mongod
 ```
 
-5. Run the Node server using this command:
+6. Run the Node server using this command:
 
 ```
 node app.js
 ```
 
-6. Start the angular server using this command:
+7. Start the angular server using this command:
 
 ```
 ng serve
