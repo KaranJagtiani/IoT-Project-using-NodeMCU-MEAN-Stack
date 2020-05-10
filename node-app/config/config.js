@@ -1,3 +1,3 @@
 module.exports = {
-    secret: "karanjagtiani"
-}
+  secret: "iot-mini-project-sem8",
+};

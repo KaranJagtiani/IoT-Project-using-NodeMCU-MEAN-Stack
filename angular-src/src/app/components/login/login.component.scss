@@ -320,13 +320,11 @@ hr {
   background-color: #ffffff;
 }
 
-
-.my_container{
+.my_container {
   width: 100%;
-  
 }
 
-.login_form{
+.login_form {
   width: 60%;
   padding: 40px;
   margin-top: -40px;
@@ -342,14 +340,14 @@ hr {
   background: #141414;
 }
 
-@media only screen and(max-width: 320px){
-  .login_form{
-    margin-top: -60px!important;
+@media only screen and(max-width: 320px) {
+  .login_form {
+    margin-top: -60px !important;
   }
 }
 
-@media only screen and(max-width: 856px){
-  .code_snippet{
-    display: none!important;
+@media only screen and(max-width: 856px) {
+  .code_snippet {
+    display: none !important;
   }
 }

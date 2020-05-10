@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth-service/auth.service';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { AuthService } from "src/app/services/auth-service/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
-
   username: String;
   password: String;
   invalidUsername: Boolean = true;
@@ -17,39 +16,34 @@ export class LoginComponent implements OnInit {
   formEmpty: Boolean = false;
   response: String;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   login() {
     let user = {
       username: this.username,
-      password: this.password
-    }
-    if(!user.username || !user.password){
+      password: this.password,
+    };
+    if (!user.username || !user.password) {
       this.formEmpty = true;
       return;
-    }
-    else{
+    } else {
       this.formEmpty = false;
     }
-    console.log(user);
-    this.authService.authenticateUser(user).subscribe(profile => {
-      console.log(profile);
+    this.authService.authenticateUser(user).subscribe((profile) => {
       if (profile.success) {
         this.authService.storeUserData(profile.token, profile.user);
-        this.router.navigate(['/profile']);
+        this.router.navigate(["/profile"]);
         location.reload();
-      }
-      else {
-      this.response = profile.msg;
-      this.invalidCred = true;
+      } else {
+        this.response = profile.msg;
+        this.invalidCred = true;
       }
     });
   }
 
-  signUp(){
-    this.router.navigate(['/register'])
+  signUp() {
+    this.router.navigate(["/register"]);
   }
 }

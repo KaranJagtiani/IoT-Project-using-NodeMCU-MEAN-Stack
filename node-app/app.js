@@ -1,83 +1,133 @@
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const passport = require('passport');
-const mongoose = require('mongoose');
-var mqtt = require('mqtt');
-const http = require('http');
-const socketIo = require('socket.io');
+const express = require("express");
+const path = require("path");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const passport = require("passport");
+const mongoose = require("mongoose");
+var mqtt = require("mqtt");
+const http = require("http");
+const socketIo = require("socket.io");
 
 const mongoOpts = {
-	useNewUrlParser: true,
-	useUnifiedTopology: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 };
 
-const db = mongoose.connect('mongodb://localhost:27017/iot', mongoOpts, (err, res) => {
-	if (err) {
-		console.log(err);
-	}
-	else {
-		console.log('Connected to: ', db, ' ', res);
-	}
+mongoose.connect("mongodb://localhost:27017/iot", mongoOpts, (err, res) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("Connected to Database");
+  }
 });
 
 const app = express();
 const server = http.Server(app);
 const io = socketIo(server);
 
-const users = require('./routes/route');
+const users = require("./routes/route");
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 
 app.use(passport.initialize());
 app.use(passport.session());
-require('./config/passport')(passport);
+require("./config/passport")(passport);
 
-app.use('/users', users);
+app.use("/users", users);
 
-app.get('*', (req, res) => {
-	res.sendFile(__dirname + '\\public\\index.html');
+app.get("*", (req, res) => {
+  res.sendFile(__dirname + "\\public\\index.html");
 });
 
-// Add your broker service link here.
-var client = mqtt.connect('mqtt://key:secret@broker_service', {
-	clientId: 'Server'
+const Appliance = require("./models/appliances");
+const Device = require("./models/device");
+
+// Add your MQTT broker link below
+var mqttClient = mqtt.connect("<mqtt-broker-link>", {
+  clientId: "Server",
 });
 
 const myClientList = {};
 
 // Socket Connection
 io.on("connection", (socket) => {
-	myClientList[socket.id] = socket;
+  myClientList[socket.id] = socket;
 
-	socket.on('new-message', (message) => {
-		console.log("Socket: "+message);
-		client.publish('appliance', message)
-		myClientList[socket.id].emit('new-message', message);
-	});
+  Device.getDevice((err, device) => {
+    myClientList[socket.id].emit("device-connected", device.connected);
+  });
 
-	socket.on('disconnect', (socket) => {
-		console.log("\nDisconnected");
-		delete myClientList[socket.id];
-	})
+  socket.on("new-message", (message) => {
+    mqttClient.publish("appliance", message);
+  });
+
+  socket.on("disconnect", (socket) => {
+    delete myClientList[socket.id];
+  });
 });
 
 // MQTT Connection
-client.on('connect', () => {
-	client.subscribe('/connected', msg => {
-	});
+mqttClient.on("connect", () => {
+  mqttClient.subscribe("/device", (msg) => {});
+  mqttClient.subscribe("/connected", (msg) => {});
+  mqttClient.subscribe("/device-connected", (msg) => {});
 });
 
-client.on('message', function (topic, message) {
-	console.log(topic, message.toString());
-	io.emit('new-message', message.toString());
+let connectionStatus = false;
+
+setInterval(() => {
+  connectionStatus = true;
+  mqttClient.publish("checking-connection", "");
+  setTimeout(() => {
+    if (!connectionStatus) {
+      Device.changeState(true, (device) => {});
+      io.emit("device-connected", true);
+    } else {
+      Device.changeState(false, (device) => {});
+      io.emit("device-connected", false);
+    }
+  }, 1000);
+}, 1000);
+
+function createNewDevice() {
+  let device = new Device({ name: "NodeMCU", connected: false });
+  Device.createDevice(device, (device) => {});
+}
+
+// createNewDevice(); -- Uncomment to create the NodeMCU Device
+
+function convertToNumericWord(num) {
+  if (num === 0) return "One";
+  if (num === 1) return "Two";
+  if (num === 2) return "Three";
+}
+
+mqttClient.on("message", function (topic, message) {
+  if (message.toString() === "Connected.") {
+    Device.changeState(true, (device) => {});
+    Appliance.getAllApps({}, (err, apps) => {
+      if (err) throw err;
+      for (let i = 0; i < apps.length; i++) {
+        const app = apps[i];
+        let onOff = app.appOn ? 'On"' : 'Off"';
+        mqttClient.publish("appliance", '"' + convertToNumericWord(i) + onOff);
+      }
+    });
+  }
+
+  if (topic === "/device") {
+    io.emit("from-device", message.toString());
+  }
+
+  if (topic === "/device-connected") {
+    connectionStatus = false;
+  }
 });
 
 const port = process.env.PORT || 3000;
 
 server.listen(port, () => {
-	console.log('Server Started on port: ' + port);
+  console.log("Server Started on port: " + port);
 });

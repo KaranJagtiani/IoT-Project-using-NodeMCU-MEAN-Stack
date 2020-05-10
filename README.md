@@ -1,18 +1,25 @@
 # IoT-Application-using-MEAN-Stack
-IoT application built using the MEAN stack for controlling appliances connected to Node MCU.
 
-## This repo contains the code for a Socket-MQTT Appliance Management App built using the following:
+IoT application built using the MEAN stack for controlling appliances connected to a Node MCU device.
+
+## This repo contains the code for a Socket-MQTT Appliance Management Application built using the following:
 * MongoDB
-* ExpressJS
+* Express JS
 * Angular
-* NodeJS
-* Arduino
+* Node JS
 
 ## Schematic flow diagram demonstrating the working of the application:
 ![](images/schematic_flowchart.jpg) 
 
 ## Circuit Diagram:
 ![](images/circuit.png) 
+
+## Requirements:
+1. Node MCU
+2. Three LED's
+3. Three 220&#937; Resistors
+4. Breadboard
+5. Jumper Wires
 
 ## Appliances Page:
 Here you can control the LED's connected to the Node MCU.
@@ -53,7 +60,7 @@ mongod
 
 ## Usage
 
-1. Run the Node server using this command:
+1. Run the Node server, by running this command in the node-app folder:
 
 ```
 node app.js

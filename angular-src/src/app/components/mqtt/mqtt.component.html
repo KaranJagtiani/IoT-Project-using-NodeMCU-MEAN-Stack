@@ -1,3 +1,7 @@
+<div *ngIf="!deviceConnected" class="grey-overlay">
+    <div class="grey-overlay-text">Device not connected.</div>
+</div>
+
 <div class="appliances text-center container-fluid">
     <div class="row justify-content-center">
         <span *ngFor="let appliance of AppInfo; let i = index" class="col-sm-4">

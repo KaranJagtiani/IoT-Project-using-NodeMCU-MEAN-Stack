@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { MqttComponent } from './mqtt.component';
+import { MqttComponent } from "./mqtt.component";
 
-describe('MqttComponent', () => {
+describe("MqttComponent", () => {
   let component: MqttComponent;
   let fixture: ComponentFixture<MqttComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MqttComponent ]
-    })
-    .compileComponents();
+      declarations: [MqttComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('MqttComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
